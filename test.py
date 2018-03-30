@@ -2,23 +2,23 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from localstack.services import infra
+# from localstack.services import infra
 from logzero import logger
 from users import User
 
 
 
 class TestCase(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        infra.start_infra(async=True)
+    # @classmethod
+    # def setUpClass(cls):
+    #     infra.start_infra(async=True)
 
     def setUp(self):
         User.create_table(wait=True)
 
-    @classmethod
-    def teardownClass(cls):
-        infra.stop_infra()
+    # @classmethod
+    # def teardownClass(cls):
+    #     infra.stop_infra()
 
     def tearDown(self):
         User.delete_table()
