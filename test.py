@@ -9,8 +9,9 @@ from users import User
 
 
 class TestCase(unittest.TestCase):
-    # @classmethod
-    # def setUpClass(cls):
+    @classmethod
+    def setUpClass(cls):
+        logger.info(User.Meta.host)
     #     infra.start_infra(async=True)
 
     def setUp(self):

@@ -10,6 +10,7 @@ from pynamodb.models import Model
 from logzero import logger
 
 AWS_DYNAMO_TABLE_NAME_USERS = os.getenv('AWS_DYNAMO_TABLE_NAME_USERS') or 'test-Users'
+DYNAMODB_ENDPOINT = os.getenv('DYNAMODB_ENDPOINT')
 LOCAL_DEBUG = bool(os.getenv('LOCAL_DEBUG')) or False
 ID_PREFIX = 'user'
 
@@ -20,8 +21,8 @@ class User(Model):
         write_capacity_units = 1
         read_capacity_units = 1
 
-        if LOCAL_DEBUG:
-            host = 'http://localhost:4569'
+        if DYNAMODB_ENDPOINT:
+            host = DYNAMODB_ENDPOINT
 
     user_id = UnicodeAttribute(hash_key=True)
     email = UnicodeAttribute()

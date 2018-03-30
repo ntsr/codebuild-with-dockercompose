@@ -8,16 +8,6 @@ phases:
   install:
     commands:
       - sudo apt-get update
-      - sudo apt-get install zip bc
-      - sudo curl -o /usr/local/bin/jq -L https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && sudo chmod +x /usr/local/bin/jq
-      - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-      - sudo apt-get install -y nodejs
-      - sudo npm cache clean --force
-      - sudo npm install -g n
-      - sudo n stable
-      - sudo ln -sf /usr/local/bin/node /usr/bin/node
-      - sudo apt-get purge -y nodejs
-      - npm update -g npm
       - python -m venv .
       - . bin/activate
       - pip install --upgrade pip
@@ -29,4 +19,4 @@ phases:
       - docker-compose up -d
   build:
     commands:
-      - LOCAL_DEBUG=true SERVICES=dynamodb python test.py
+      - LOCAL_DEBUG=true DYNAMODB_ENDPOINT=http://localstack:4569 python test.py
