@@ -33,7 +33,7 @@ class User(Model):
     @classmethod
     def new_item(cls, email, password, save=True):
         now = dt.now()
-        user_id = cls.generate_user_id()
+        user_id = '{}::{}'.format(ID_PREFIX, email)
         user = User(
             user_id,
             None,

@@ -8,4 +8,4 @@ phases:
   build:
     commands:
       - pip install -r requirements.txt
-      - SERVICES=dynamodb python -m unittest
+      - SERVICES=dynamodb python test.py

@@ -9,12 +9,18 @@ from users import User
 
 
 class TestCase(unittest.TestCase):
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         infra.start_infra(async=True)
+
+    def setUp(self)
         User.create_table(wait=True)
 
-    def teardown(self):
+    @classmethod
+    def teardownClass(cls):
         infra.stop_infra()
+
+    def tearDown(self)
         User.delete_table()
 
     def test__sample(self):
