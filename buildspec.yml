@@ -19,4 +19,4 @@ phases:
       - docker-compose up -d
   build:
     commands:
-      - LOCAL_DEBUG=true DYNAMODB_ENDPOINT=http://localstack:4569 python test.py
+      - DYNAMODB_ENDPOINT=http://localhost:4569 python test.py
