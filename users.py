@@ -10,7 +10,7 @@ from pynamodb.models import Model
 from logzero import logger
 
 AWS_DYNAMO_TABLE_NAME_USERS = os.getenv('AWS_DYNAMO_TABLE_NAME_USERS') or 'test-Users'
-LOCAL_DEBUG = bool(os.getenv('LOCAL_DEBUG')) or False
+LOCAL_DEBUG = bool(os.getenv('LOCAL_DEBUG')) or True
 ID_PREFIX = 'user'
 
 
