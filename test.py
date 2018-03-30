@@ -13,7 +13,7 @@ class TestCase(unittest.TestCase):
     def setUpClass(cls):
         infra.start_infra(async=True)
 
-    def setUp(self)
+    def setUp(self):
         User.create_table(wait=True)
 
     @classmethod
