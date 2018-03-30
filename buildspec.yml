@@ -19,4 +19,5 @@ phases:
       - docker-compose up -d
   build:
     commands:
-      - DYNAMODB_ENDPOINT=http://localhost:14569 python test.py
+      - aws --endpoint-url http://localhost:4569 dynamodb list-tables
+      - DYNAMODB_ENDPOINT=http://localhost:4569 python test.py

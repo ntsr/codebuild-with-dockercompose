@@ -6,8 +6,7 @@ services:
     image: localstack/localstack
     ports:
       - "8080:8080"
-      - "14569:4569"
+      - "4569:4569"
     environment:
       - SERVICES=dynamodb
-      - DEFAULT_REGION=ap-northeast-1
       - DOCKER_HOST=unix:///var/run/docker.sock
