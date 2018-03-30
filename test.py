@@ -20,7 +20,7 @@ class TestCase(unittest.TestCase):
     def teardownClass(cls):
         infra.stop_infra()
 
-    def tearDown(self)
+    def tearDown(self):
         User.delete_table()
 
     def test__sample(self):
