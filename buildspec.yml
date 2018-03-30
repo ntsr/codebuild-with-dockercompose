@@ -11,4 +11,4 @@ phases:
   build:
     commands:
       - pipenv install
-      - pipenv run python -m unittest
+      - SERVICES=dynamodb pipenv run python -m unittest
