@@ -8,16 +8,17 @@ phases:
   install:
     commands:
       - sudo apt-get update
-      - python -m venv .
-      - . bin/activate
       - pip install --upgrade pip
       - pip install --upgrade awscli
+      - pip install --upgrade pipenv
+      - export PIPENV_VENV_IN_PROJECT=1
+      - pipenv install --skip-lock
       - curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
   pre_build:
     commands:
-      - pip install -r requirements.txt
       - docker-compose up -d
   build:
     commands:
       - aws --endpoint-url http://localhost:4569 dynamodb list-tables
-      - DYNAMODB_ENDPOINT=http://localhost:4569 python test.py
+      - export PIPENV_VENV_IN_PROJECT=1
+      - DYNAMODB_ENDPOINT=http://localhost:4569 pipenv run python test.py
